@@ -25,6 +25,7 @@ class _EditorPageState extends State<EditorPage> {
   double textSize = 14;
   File? phoneImage;
   TextStyle FontFamily = festivalFontFamily[0];
+  TextEditingController mainText = TextEditingController();
 
   Future<void> getImage({required ImageSource source}) async {
     ImagePicker picker = ImagePicker();
@@ -72,16 +73,23 @@ class _EditorPageState extends State<EditorPage> {
                   ),
                 ),
                 alignment: Alignment.center,
-                child: Visibility(
-                  visible: addText == true,
-                  child: SelectableText(
-                    text,
-                    style: TextStyle(
-                      color: textColour,
-                      fontSize: textSize,
-                      fontWeight: FontWeight.bold,
+                child: Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    SelectableText(
+                      mainText.text,
+                      style: TextStyle(
+                        color: textColour,
+                        fontSize: textSize,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
-                  ),
+                    phoneImage != null
+                        ? Image(
+                            image: FileImage(phoneImage!),
+                          )
+                        : Container(),
+                  ],
                 ),
               ),
               const SizedBox(
@@ -92,12 +100,28 @@ class _EditorPageState extends State<EditorPage> {
                 visible: addText == true,
                 child: SingleChildScrollView(
                   child: Container(
-                    height: 230,
+                    height: 300,
                     width: 500,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
+                        const Text(
+                          'Edit Text',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18,
+                          ),
+                        ),
+                        TextField(
+                          controller: mainText,
+                          decoration: const InputDecoration(
+                            hintText: 'Text',
+                          ),
+                          onChanged: (val) {
+                            setState(() {});
+                          },
+                        ),
                         const Text(
                           'Text Style',
                           style: TextStyle(
@@ -194,7 +218,7 @@ class _EditorPageState extends State<EditorPage> {
                               ),
                             ),
                             Text(
-                              '${textSize}',
+                              '${textSize.toInt()}',
                               style: const TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 16,
@@ -265,6 +289,7 @@ class _EditorPageState extends State<EditorPage> {
                         ),
                       ),
                       Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           ElevatedButton(
                             onPressed: () {
