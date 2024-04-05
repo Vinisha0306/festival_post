@@ -1,4 +1,4 @@
-import '../modal/app_modal.dart';
+import '../header.dart';
 
 List<Map> allPostData = [
   {
@@ -15,7 +15,7 @@ List<Map> allPostData = [
       "https://pngfreepic.com/wp-content/uploads/2022/10/524b5794.png?v=1665559543",
       "https://i.pinimg.com/736x/31/dc/50/31dc5047d64fe2578bfb76409fd7d237.jpg",
       "https://totalpng.com//public/uploads/preview/diwali-frame-transparent-png-116649611188kcf5hat9w.png",
-      "https://images.rawpixel.com/image_png_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvdjkwNi1naWItMDAzMGMucG5n.png",
+      "https://i.pinimg.com/236x/2b/7d/1c/2b7d1c002c0982c8cb1f0156c251ef87.jpg",
       "https://totalpng.com//public/uploads/preview/happy-diwali-frame-png-116649611343mny314ikq.png",
       "https://play-lh.googleusercontent.com/Imm5EoclOEMBMNphdUMoB-6-kwjJdlfMrb0P7u8RtblocXfvuyKxYMP0hUgrYXREoTY",
       "https://www.pngitem.com/pimgs/m/108-1089343_happy-diwali-photo-frame-png-transparent-png.png",
@@ -476,6 +476,37 @@ List<Map> allPostData = [
       "https://i.pinimg.com/474x/46/14/60/461460b957a6c49f9a0374640bef0a2d.jpg"
     ]
   }
+];
+
+List<TextStyle> festivalFontFamily = [
+  GoogleFonts.abel(),
+  GoogleFonts.roboto(),
+  GoogleFonts.dancingScript(),
+  GoogleFonts.bitter(),
+  GoogleFonts.anton(),
+  GoogleFonts.yatraOne(),
+  GoogleFonts.pacifico(),
+  GoogleFonts.fjallaOne(),
+  GoogleFonts.shadowsIntoLight(),
+  GoogleFonts.indieFlower(),
+  GoogleFonts.zillaSlab(),
+  GoogleFonts.satisfy(),
+  GoogleFonts.permanentMarker(),
+  GoogleFonts.amaticSc(),
+  GoogleFonts.cinzel(),
+  GoogleFonts.sairaCondensed(),
+  GoogleFonts.kalam(),
+  GoogleFonts.courgette(),
+  GoogleFonts.righteous(),
+  GoogleFonts.tinos(),
+  GoogleFonts.lobster(),
+  GoogleFonts.changa(),
+  GoogleFonts.greatVibes(),
+  GoogleFonts.zeyada(),
+  GoogleFonts.aladin(),
+  GoogleFonts.kaushanScript(),
+  GoogleFonts.pathwayGothicOne(),
+  GoogleFonts.sacramento()
 ];
 
 List<Festival> allPost = allPostData

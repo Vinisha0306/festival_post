@@ -5,3 +5,5 @@ export '../page/splash_screens/splash_screens.dart';
 export 'package:festival_post/routes/AppRoutes.dart';
 export '../page/all_post_page/all_post_page.dart';
 export 'package:festival_post/page/editor_page/editor_page.dart';
+export '../modal/app_modal.dart';
+export 'package:google_fonts/google_fonts.dart';
