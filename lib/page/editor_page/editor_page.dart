@@ -24,13 +24,14 @@ class _EditorPageState extends State<EditorPage> {
   String text = 'Text';
   Color textColour = Colors.black;
   double textSize = 14;
-  double IHeight = 300;
-  double IWidth = 200;
+  BoxShape imageShape = BoxShape.rectangle;
   File? phoneImage;
   TextStyle FontFamily = festivalFontFamily[0];
   TextEditingController mainText = TextEditingController();
   Offset dxy = Offset(0, 0);
   Offset txy = Offset(0, 0);
+  double IHeight = 300;
+  double IWidth = 200;
 
   Future<void> getImage({required ImageSource source}) async {
     ImagePicker picker = ImagePicker();
@@ -149,13 +150,14 @@ class _EditorPageState extends State<EditorPage> {
                         },
                         child: Transform.translate(
                           offset: txy,
-                          child: SelectableText(
-                            mainText.text,
-                            style: TextStyle(
-                              color: textColour,
-                              fontSize: textSize,
-                              // fontFamily: FontFamily as String,
-                              fontWeight: FontWeight.bold,
+                          child: Container(
+                            child: SelectableText(
+                              mainText.text,
+                              style: FontFamily.copyWith(
+                                color: textColour,
+                                fontSize: textSize,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ),
                         ),
@@ -170,13 +172,18 @@ class _EditorPageState extends State<EditorPage> {
                                 );
                               },
                               child: Container(
-                                height: IHeight,
-                                width: IWidth,
                                 child: Transform.translate(
                                   offset: dxy,
-                                  child: Image(
-                                    image: FileImage(phoneImage!),
-                                    fit: BoxFit.fill,
+                                  child: Container(
+                                    height: IHeight,
+                                    width: IWidth,
+                                    decoration: BoxDecoration(
+                                      shape: imageShape,
+                                      image: DecorationImage(
+                                        image: FileImage(phoneImage!),
+                                        fit: BoxFit.fill,
+                                      ),
+                                    ),
                                   ),
                                 ),
                               ),
@@ -341,137 +348,204 @@ class _EditorPageState extends State<EditorPage> {
                 child: Container(
                   height: 230,
                   width: 500,
-                  child: Column(
-                    children: [
-                      const Text(
-                        'Choose Source',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 24,
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        const Text(
+                          'Choose Source',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 24,
+                          ),
                         ),
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          ElevatedButton(
-                            onPressed: () {
-                              getImage(source: ImageSource.camera);
-                            },
-                            child: const Text(
-                              'Camera',
-                            ),
-                          ),
-                          TextButton(
-                            onPressed: () {
-                              getImage(source: ImageSource.gallery);
-                            },
-                            child: const Text(
-                              'Gallery',
-                            ),
-                          ),
-                          Visibility(
-                            visible: phoneImage != null,
-                            child: TextButton(
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            ElevatedButton(
                               onPressed: () {
-                                phoneImage = null;
-                                setState(() {});
+                                getImage(source: ImageSource.camera);
                               },
                               child: const Text(
-                                'Remove Image',
+                                'Camera',
                               ),
                             ),
-                          ),
-                        ],
-                      ),
-                      Visibility(
-                        visible: phoneImage != null,
-                        child: Column(
-                          children: [
-                            const Text(
-                              'Change Image Size',
-                              style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
+                            TextButton(
+                              onPressed: () {
+                                getImage(source: ImageSource.gallery);
+                              },
+                              child: const Text(
+                                'Gallery',
                               ),
                             ),
-                            Row(
-                              children: [
-                                const Text(
-                                  'Height',
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 18,
-                                  ),
+                            Visibility(
+                              visible: phoneImage != null,
+                              child: TextButton(
+                                onPressed: () {
+                                  phoneImage = null;
+                                  setState(() {});
+                                },
+                                child: const Text(
+                                  'Remove Image',
                                 ),
-                                Spacer(),
-                                IconButton(
-                                  onPressed: () {
-                                    IHeight -= 5;
-                                    setState(() {});
-                                  },
-                                  icon: const Icon(
-                                    CupertinoIcons.minus_circle_fill,
-                                  ),
-                                ),
-                                Text(
-                                  '${IHeight.toInt()}',
-                                  style: const TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 16,
-                                  ),
-                                ),
-                                IconButton(
-                                  onPressed: () {
-                                    IHeight += 5;
-                                    setState(() {});
-                                  },
-                                  icon: const Icon(
-                                    CupertinoIcons.plus_circle_fill,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                const Text(
-                                  'Width',
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 18,
-                                  ),
-                                ),
-                                Spacer(),
-                                IconButton(
-                                  onPressed: () {
-                                    IWidth -= 5;
-                                    setState(() {});
-                                  },
-                                  icon: const Icon(
-                                    CupertinoIcons.minus_circle_fill,
-                                  ),
-                                ),
-                                Text(
-                                  '${IWidth.toInt()}',
-                                  style: const TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 16,
-                                  ),
-                                ),
-                                IconButton(
-                                  onPressed: () {
-                                    IWidth += 5;
-                                    setState(() {});
-                                  },
-                                  icon: const Icon(
-                                    CupertinoIcons.plus_circle_fill,
-                                  ),
-                                ),
-                              ],
+                              ),
                             ),
                           ],
                         ),
-                      ),
-                    ],
+                        Visibility(
+                          visible: phoneImage != null,
+                          child: Column(
+                            children: [
+                              const Text(
+                                'Image Shape',
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              const SizedBox(
+                                height: 5,
+                              ),
+                              Row(
+                                children: [
+                                  GestureDetector(
+                                    onTap: () {
+                                      imageShape = BoxShape.rectangle;
+                                      setState(() {});
+                                    },
+                                    child: Container(
+                                      height: 100,
+                                      width: 100,
+                                      decoration: BoxDecoration(
+                                        color: Colors.grey,
+                                        shape: BoxShape.rectangle,
+                                        border: Border.all(
+                                          color:
+                                              imageShape == BoxShape.rectangle
+                                                  ? Colors.greenAccent
+                                                  : Colors.black,
+                                          width: 2,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    width: 10,
+                                  ),
+                                  GestureDetector(
+                                    onTap: () {
+                                      imageShape = BoxShape.circle;
+                                      setState(() {});
+                                    },
+                                    child: Container(
+                                      height: 100,
+                                      width: 100,
+                                      decoration: BoxDecoration(
+                                        color: Colors.grey,
+                                        shape: BoxShape.circle,
+                                        border: Border.all(
+                                          color: imageShape == BoxShape.circle
+                                              ? Colors.greenAccent
+                                              : Colors.black,
+                                          width: 2,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                        Visibility(
+                          visible: phoneImage != null,
+                          child: Column(
+                            children: [
+                              const Text(
+                                'Change Image Size',
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Row(
+                                children: [
+                                  const Text(
+                                    'Height',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 18,
+                                    ),
+                                  ),
+                                  Spacer(),
+                                  IconButton(
+                                    onPressed: () {
+                                      IHeight -= 5;
+                                      setState(() {});
+                                    },
+                                    icon: const Icon(
+                                      CupertinoIcons.minus_circle_fill,
+                                    ),
+                                  ),
+                                  Text(
+                                    '${IHeight.toInt()}',
+                                    style: const TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 16,
+                                    ),
+                                  ),
+                                  IconButton(
+                                    onPressed: () {
+                                      IHeight += 5;
+                                      setState(() {});
+                                    },
+                                    icon: const Icon(
+                                      CupertinoIcons.plus_circle_fill,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  const Text(
+                                    'Width',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 18,
+                                    ),
+                                  ),
+                                  Spacer(),
+                                  IconButton(
+                                    onPressed: () {
+                                      IWidth -= 5;
+                                      setState(() {});
+                                    },
+                                    icon: const Icon(
+                                      CupertinoIcons.minus_circle_fill,
+                                    ),
+                                  ),
+                                  Text(
+                                    '${IWidth.toInt()}',
+                                    style: const TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 16,
+                                    ),
+                                  ),
+                                  IconButton(
+                                    onPressed: () {
+                                      IWidth += 5;
+                                      setState(() {});
+                                    },
+                                    icon: const Icon(
+                                      CupertinoIcons.plus_circle_fill,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
