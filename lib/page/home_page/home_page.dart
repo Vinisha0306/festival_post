@@ -52,7 +52,7 @@ class _HomePageState extends State<HomePage> {
                         borderRadius: BorderRadius.circular(10),
                         image: DecorationImage(
                           image: NetworkImage(
-                            allPost[index].thamb,
+                            allPost[index].thamb ?? allPost[0].thamb,
                           ),
                           fit: BoxFit.cover,
                         ),

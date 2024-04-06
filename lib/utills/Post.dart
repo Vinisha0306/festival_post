@@ -24,6 +24,9 @@ List<Map> allPostData = [
       "https://img.pikbest.com/origin/09/43/27/38spIkbEsTmJ3.jpeg!f305cw",
       "https://www.gujaratipictures.com/wp-content/uploads/2020/11/Happy-Diwali-.png",
       "https://i.pinimg.com/564x/f7/90/d9/f790d9e7dc6000846723d59fcbafb673.jpg"
+    ],
+    "elements": [
+      "https://cdn-icons-png.flaticon.com/128/5345/5345825.png",
     ]
   },
   {
@@ -49,6 +52,9 @@ List<Map> allPostData = [
       "https://cdn.dribbble.com/users/4080047/screenshots/17787874/media/c877f56963188c613e64767b3092ece2.jpg",
       "https://www.shutterstock.com/image-photo/splash-frames-colorful-powder-over-260nw-764250925.jpg",
       "https://image.slidesdocs.com/responsive-images/background/festival-holi-splashing-water-cute-cartoon-orange-powerpoint-background_fbd3e9f7cb__960_540.jpg"
+    ],
+    "elements": [
+      "https://cdn-icons-png.flaticon.com/128/5345/5345825.png",
     ]
   },
   {
@@ -74,6 +80,9 @@ List<Map> allPostData = [
       "https://i.pinimg.com/236x/75/23/22/7523227766d08b612d86572fa47ca304.jpg",
       "https://i.pinimg.com/236x/fb/65/d0/fb65d0dd04cfa0adadb8aba2268faf22.jpg",
       "https://i.pinimg.com/236x/22/5f/f5/225ff59bb7cd9ea70215bc805e6a50a8.jpg"
+    ],
+    "elements": [
+      "https://cdn-icons-png.flaticon.com/128/5345/5345825.png",
     ]
   },
   {
@@ -99,6 +108,9 @@ List<Map> allPostData = [
       "https://c8.alamy.com/comp/2PHN9H6/young-religious-muslim-people-wishing-each-other-on-occasion-of-eid-star-round-frame-on-yellow-background-for-islamic-festival-celebration-2PHN9H6.jpg",
       "https://i.pinimg.com/564x/0e/e8/28/0ee828b9c0118b63cc67e76980d39ad0.jpg",
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPGcbn-qkTveyIWI4xZwdJpkKgnpQi2dkJBHUwE1dBLw&s"
+    ],
+    "elements": [
+      "https://cdn-icons-png.flaticon.com/128/5345/5345825.png",
     ]
   },
   {
@@ -124,6 +136,9 @@ List<Map> allPostData = [
       "https://c8.alamy.com/comp/W86DDB/illustration-of-ganesh-chaturthi-festival-of-india-banner-concept-design-W86DDB.jpg",
       "https://media.istockphoto.com/id/1029328558/vector/illustration-of-lord-ganpati-background-for-ganesh-chaturthi-festival-of-india.jpg?s=612x612&w=0&k=20&c=im0j6kcacY-0UwOLA2eTjSo-ObvjtE-OfL2f_9gvai4=",
       "https://www.jiomart.com/images/product/original/rvq6jor3al/artx-multicolor-god-ganesh-ganpati-leaf-photo-frame-wall-art-painting-13-x-13-product-images-orvq6jor3al-p591674284-0-202205281855.jpg?im=Resize=(1000,1000)"
+    ],
+    "elements": [
+      "https://cdn-icons-png.flaticon.com/128/5345/5345825.png",
     ]
   },
   {
@@ -149,6 +164,9 @@ List<Map> allPostData = [
       "https://i.pinimg.com/236x/9d/18/d1/9d18d17835b4a3129f2262c157a1fb58.jpg",
       "https://i.pinimg.com/236x/d9/42/c2/d942c2f1be1c5962e4902a397ecdd17d.jpg",
       "https://i.pinimg.com/236x/db/40/c1/db40c12e90350bdf9fc9f774fd514dfc.jpg",
+    ],
+    "elements": [
+      "https://cdn-icons-png.flaticon.com/128/5345/5345825.png",
     ]
   },
   {
@@ -174,6 +192,9 @@ List<Map> allPostData = [
       "https://png.pngtree.com/png-vector/20210727/ourlarge/pngtree-twibbon-luxury-raksha-bandhan-frame-png-image_3739785.jpg",
       "https://png.pngtree.com/png-clipart/20210718/original/pngtree-empty-frame-raksha-bandhan-festival-for-social-media-instagram-post-png-image_6540192.jpg",
       "https://www.mynameart.com/pics/raksha-bandhan-hindi-wishes-photo-frame.jpg"
+    ],
+    "elements": [
+      "https://cdn-icons-png.flaticon.com/128/5345/5345825.png",
     ]
   },
   {
@@ -199,6 +220,9 @@ List<Map> allPostData = [
       "https://i.pinimg.com/236x/49/5c/78/495c7809eef3b07927139fb5f14f173a.jpg",
       "https://i.pinimg.com/236x/28/49/ab/2849ab92049c9cd421d43725cafa8c59.jpg",
       "https://i.pinimg.com/236x/dc/86/32/dc863269b7bfd89287f3f0c0459a22a5.jpg"
+    ],
+    "elements": [
+      "https://cdn-icons-png.flaticon.com/128/5345/5345825.png",
     ]
   },
   {
@@ -224,6 +248,9 @@ List<Map> allPostData = [
       "https://i.pinimg.com/236x/f6/76/23/f67623eec93bf7d32c529c059413ad62.jpg",
       "https://i.pinimg.com/236x/f5/6f/94/f56f94e6c7f0c29242515b708609b1ba.jpg",
       "https://i.pinimg.com/236x/10/07/3d/10073dbc97d0c9024e2ee387f202be16.jpg"
+    ],
+    "elements": [
+      "https://cdn-icons-png.flaticon.com/128/5345/5345825.png",
     ]
   },
   {
@@ -249,6 +276,9 @@ List<Map> allPostData = [
       "https://i.pinimg.com/236x/85/51/e2/8551e242fc8c7d70591bc94d9d7e0c4c.jpg",
       "https://i.pinimg.com/236x/f1/66/61/f166615d111a07751dc46facfdb03e33.jpg",
       "https://i.pinimg.com/236x/1c/ff/78/1cff78b48b0ab97a13f0bd8ed1880d45.jpg"
+    ],
+    "elements": [
+      "https://cdn-icons-png.flaticon.com/128/5345/5345825.png",
     ]
   },
   {
@@ -274,6 +304,9 @@ List<Map> allPostData = [
       "https://i.pinimg.com/236x/f8/b2/27/f8b227d845b09b9cafaadd3b79a2e094.jpg",
       "https://i.pinimg.com/236x/09/21/9e/09219e5c28f00986d2126666d34d78ba.jpg",
       "https://i.pinimg.com/236x/f7/25/30/f725303fe8c4b2c399209eac499e01d2.jpg"
+    ],
+    "elements": [
+      "https://cdn-icons-png.flaticon.com/128/5345/5345825.png",
     ]
   },
   {
@@ -299,6 +332,9 @@ List<Map> allPostData = [
       "https://media.istockphoto.com/id/1225765818/vector/krishna-janmashtami-digital-art-illustration-annual-hindu-festival-in-india-birth-of-krishna.jpg?s=612x612&w=0&k=20&c=AUQdQjOgAmoUTfBJIM18Bjp1bi7Hteu2HsbYGrXy5Ts=",
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6r-jMrszUGLArCn42BS1MOhxmgqV73DxjLFicOgr3qA&s",
       "https://pbs.twimg.com/ext_tw_video_thumb/1560429347529719808/pu/img/mfxFv1yiNeWzJWx2.jpg:large"
+    ],
+    "elements": [
+      "https://cdn-icons-png.flaticon.com/128/5345/5345825.png",
     ]
   },
   {
@@ -324,6 +360,9 @@ List<Map> allPostData = [
       "https://i.pinimg.com/236x/2c/34/13/2c34130e525723d2795fffaac375bebf.jpg",
       "https://i.pinimg.com/236x/da/f6/ce/daf6ce5d782e9d84a72209c03bc471b1.jpg",
       "https://i.pinimg.com/236x/3c/d8/95/3cd89567051d83b29f3bbe2c3de2f16b.jpg"
+    ],
+    "elements": [
+      "https://cdn-icons-png.flaticon.com/128/5345/5345825.png",
     ]
   },
   {
@@ -349,6 +388,9 @@ List<Map> allPostData = [
       "https://i.pinimg.com/236x/c9/6b/6c/c96b6c7a851944edaa760f74553c5d51.jpg",
       "https://i.pinimg.com/236x/5e/0b/e3/5e0be30fc8828af3784dead91b09d4f5.jpg",
       "https://i.pinimg.com/236x/69/63/16/696316c80dde38762f96004dc2f5cd23.jpg"
+    ],
+    "elements": [
+      "https://cdn-icons-png.flaticon.com/128/5345/5345825.png",
     ]
   },
   {
@@ -374,6 +416,9 @@ List<Map> allPostData = [
       "https://as1.ftcdn.net/v2/jpg/04/65/04/86/1000_F_465048610_b7NEjt50mYrwyGaxeIeUx3ZT1Z3GK0H4.jpg",
       "https://media.istockphoto.com/id/1278758878/vector/happy-dussehra-indian-festival-card-with-bow-and-arrow-on-orange-background-with-mandala.jpg?s=612x612&w=0&k=20&c=sdZzQmsqKsmNVYklPXGPKpxT2B6xp0tp0md1JOM_g4c=",
       "https://img.myloview.com/stickers/happy-dussehra-festival-celebration-background-with-funny-face-of-demon-ravana-with-his-ten-heads-on-ornament-wooden-effect-background-can-be-used-greeting-cards-design-700-179611346.jpg"
+    ],
+    "elements": [
+      "https://cdn-icons-png.flaticon.com/128/5345/5345825.png",
     ]
   },
   {
@@ -399,6 +444,9 @@ List<Map> allPostData = [
       "https://i.pinimg.com/236x/f2/ff/43/f2ff43c879e7bef1149d65e0e2c2a2e7.jpg",
       "https://i.pinimg.com/236x/4c/ea/ea/4ceaea7b20b6176a7716c78d5ed0af86.jpg",
       "https://i.pinimg.com/236x/0c/99/7b/0c997b9d99541be61ada646506fd0151.jpg"
+    ],
+    "elements": [
+      "https://cdn-icons-png.flaticon.com/128/5345/5345825.png",
     ]
   },
   {
@@ -424,6 +472,9 @@ List<Map> allPostData = [
       "https://i.pinimg.com/564x/97/84/50/9784508315fbf74279c26806f33e9ada.jpg",
       "https://i.pinimg.com/236x/52/bf/26/52bf2646236230e90673364b7e7c9e37.jpg",
       "https://i.pinimg.com/564x/1c/84/72/1c84723dc84efbfb3bf6d06be00532ed.jpg"
+    ],
+    "elements": [
+      "https://cdn-icons-png.flaticon.com/128/5345/5345825.png",
     ]
   },
   {
@@ -449,6 +500,9 @@ List<Map> allPostData = [
       "https://i.pinimg.com/236x/28/3e/75/283e758cb2ef92282e5010a3fd5e056b.jpg",
       "https://i.pinimg.com/236x/90/2a/15/902a1556e45524cbb5dcd0b43d8f4129.jpg",
       "https://i.pinimg.com/236x/a8/27/57/a827573b4e6eef670a12c24b47660945.jpg"
+    ],
+    "elements": [
+      "https://cdn-icons-png.flaticon.com/128/5345/5345825.png",
     ]
   },
   {
@@ -474,6 +528,9 @@ List<Map> allPostData = [
       "https://i.pinimg.com/474x/cf/cf/19/cfcf19175d8f13fa0564240c8b1c5784.jpg",
       "https://i.pinimg.com/236x/ce/f5/10/cef510d53e2ae4786ec7165a959452e7.jpg",
       "https://i.pinimg.com/474x/46/14/60/461460b957a6c49f9a0374640bef0a2d.jpg"
+    ],
+    "elements": [
+      "https://cdn-icons-png.flaticon.com/128/5345/5345825.png",
     ]
   }
 ];
@@ -514,3 +571,5 @@ List<Festival> allPost = allPostData
       (e) => Festival.formMap(data: e),
     )
     .toList();
+
+List<List<String>> allElements = allPost.map((e) => e.elements).toList();

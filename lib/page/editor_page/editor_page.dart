@@ -1,13 +1,14 @@
-import 'dart:io';
-import 'dart:ui';
+import 'dart:typed_data';
+import 'dart:ui' as ui;
+
 import 'package:festival_post/header.dart';
-import 'package:festival_post/utills/Post.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
-import 'package:image_picker/image_picker.dart';
+import 'package:image_gallery_saver/image_gallery_saver.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:share_extend/share_extend.dart';
 
 class EditorPage extends StatefulWidget {
   const EditorPage({super.key});
@@ -23,9 +24,13 @@ class _EditorPageState extends State<EditorPage> {
   String text = 'Text';
   Color textColour = Colors.black;
   double textSize = 14;
+  double IHeight = 300;
+  double IWidth = 200;
   File? phoneImage;
   TextStyle FontFamily = festivalFontFamily[0];
   TextEditingController mainText = TextEditingController();
+  Offset dxy = Offset(0, 0);
+  Offset txy = Offset(0, 0);
 
   Future<void> getImage({required ImageSource source}) async {
     ImagePicker picker = ImagePicker();
@@ -38,6 +43,28 @@ class _EditorPageState extends State<EditorPage> {
     }
   }
 
+  GlobalKey widgetKey = GlobalKey();
+
+  Future<File> getFileFromWidget() async {
+    RenderRepaintBoundary boundary =
+        widgetKey.currentContext!.findRenderObject() as RenderRepaintBoundary;
+    ui.Image image = await boundary.toImage(
+      pixelRatio: 15,
+    );
+    ByteData? data = await image.toByteData(
+      format: ui.ImageByteFormat.png,
+    );
+    Uint8List list = data!.buffer.asUint8List();
+
+    Directory directory = await getTemporaryDirectory();
+    File file = await File(
+            "${directory.path}/QA${DateTime.now().millisecondsSinceEpoch}.png")
+        .create();
+    file.writeAsBytesSync(list);
+
+    return file;
+  }
+
   @override
   Widget build(BuildContext context) {
     String Edit = ModalRoute.of(context)!.settings.arguments as String;
@@ -48,6 +75,41 @@ class _EditorPageState extends State<EditorPage> {
           'Editor',
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
+        actions: [
+          IconButton(
+            onPressed: () async {
+              ImageGallerySaver.saveFile((await getFileFromWidget()).path).then(
+                (value) => ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text('Save in Gallery'),
+                  ),
+                ),
+              );
+            },
+            icon: const Icon(
+              Icons.save,
+              color: Colors.black,
+            ),
+          ),
+          IconButton(
+            onPressed: () async {
+              ShareExtend.share((await getFileFromWidget()).path, 'image').then(
+                (value) => ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text('Save in Gallery'),
+                  ),
+                ),
+              );
+            },
+            icon: const Icon(
+              Icons.share,
+              color: Colors.black,
+            ),
+          ),
+          const SizedBox(
+            width: 5,
+          ),
+        ],
         backgroundColor: const Color.fromARGB(255, 44, 184, 153),
       ),
       body: SingleChildScrollView(
@@ -56,40 +118,72 @@ class _EditorPageState extends State<EditorPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-              Container(
-                height: 400,
-                width: 400,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  border: Border.all(
-                    color: Colors.black,
-                    width: 3,
-                  ),
-                  image: DecorationImage(
-                    image: NetworkImage(
-                      Edit,
+              RepaintBoundary(
+                key: widgetKey,
+                child: Container(
+                  height: 400,
+                  width: 400,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(
+                      color: Colors.black,
+                      width: 3,
                     ),
-                    fit: BoxFit.cover,
-                  ),
-                ),
-                alignment: Alignment.center,
-                child: Stack(
-                  alignment: Alignment.center,
-                  children: [
-                    SelectableText(
-                      mainText.text,
-                      style: TextStyle(
-                        color: textColour,
-                        fontSize: textSize,
-                        fontWeight: FontWeight.bold,
+                    image: DecorationImage(
+                      image: NetworkImage(
+                        Edit,
                       ),
+                      fit: BoxFit.cover,
                     ),
-                    phoneImage != null
-                        ? Image(
-                            image: FileImage(phoneImage!),
-                          )
-                        : Container(),
-                  ],
+                  ),
+                  alignment: Alignment.center,
+                  child: Column(
+                    children: [
+                      GestureDetector(
+                        onPanUpdate: (DragUpdateDetails details) {
+                          setState(
+                            () {
+                              txy = txy + details.delta;
+                            },
+                          );
+                        },
+                        child: Transform.translate(
+                          offset: txy,
+                          child: SelectableText(
+                            mainText.text,
+                            style: TextStyle(
+                              color: textColour,
+                              fontSize: textSize,
+                              // fontFamily: FontFamily as String,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ),
+                      phoneImage != null
+                          ? GestureDetector(
+                              onPanUpdate: (DragUpdateDetails details) {
+                                setState(
+                                  () {
+                                    dxy = dxy + details.delta;
+                                  },
+                                );
+                              },
+                              child: Container(
+                                height: IHeight,
+                                width: IWidth,
+                                child: Transform.translate(
+                                  offset: dxy,
+                                  child: Image(
+                                    image: FileImage(phoneImage!),
+                                    fit: BoxFit.fill,
+                                  ),
+                                ),
+                              ),
+                            )
+                          : Container(),
+                    ],
+                  ),
                 ),
               ),
               const SizedBox(
@@ -240,39 +334,7 @@ class _EditorPageState extends State<EditorPage> {
                   ),
                 ),
               ),
-              // elements
-              Visibility(
-                visible: element == true,
-                child: Container(
-                  height: 230,
-                  width: 500,
-                  child: Column(
-                    children: [
-                      Expanded(
-                        child: GridView.builder(
-                          gridDelegate:
-                              const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 3,
-                            crossAxisSpacing: 10,
-                            mainAxisSpacing: 10,
-                          ),
-                          itemCount: allPost.length,
-                          itemBuilder: (context, index) => Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              border: Border.all(
-                                color: Colors.black,
-                                width: 2,
-                              ),
-                            ),
-                            child: Text('1'),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
+
               //images
               Visibility(
                 visible: image == true,
@@ -307,93 +369,161 @@ class _EditorPageState extends State<EditorPage> {
                               'Gallery',
                             ),
                           ),
+                          Visibility(
+                            visible: phoneImage != null,
+                            child: TextButton(
+                              onPressed: () {
+                                phoneImage = null;
+                                setState(() {});
+                              },
+                              child: const Text(
+                                'Remove Image',
+                              ),
+                            ),
+                          ),
                         ],
+                      ),
+                      Visibility(
+                        visible: phoneImage != null,
+                        child: Column(
+                          children: [
+                            const Text(
+                              'Change Image Size',
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            Row(
+                              children: [
+                                const Text(
+                                  'Height',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18,
+                                  ),
+                                ),
+                                Spacer(),
+                                IconButton(
+                                  onPressed: () {
+                                    IHeight -= 5;
+                                    setState(() {});
+                                  },
+                                  icon: const Icon(
+                                    CupertinoIcons.minus_circle_fill,
+                                  ),
+                                ),
+                                Text(
+                                  '${IHeight.toInt()}',
+                                  style: const TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 16,
+                                  ),
+                                ),
+                                IconButton(
+                                  onPressed: () {
+                                    IHeight += 5;
+                                    setState(() {});
+                                  },
+                                  icon: const Icon(
+                                    CupertinoIcons.plus_circle_fill,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                const Text(
+                                  'Width',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18,
+                                  ),
+                                ),
+                                Spacer(),
+                                IconButton(
+                                  onPressed: () {
+                                    IWidth -= 5;
+                                    setState(() {});
+                                  },
+                                  icon: const Icon(
+                                    CupertinoIcons.minus_circle_fill,
+                                  ),
+                                ),
+                                Text(
+                                  '${IWidth.toInt()}',
+                                  style: const TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 16,
+                                  ),
+                                ),
+                                IconButton(
+                                  onPressed: () {
+                                    IWidth += 5;
+                                    setState(() {});
+                                  },
+                                  icon: const Icon(
+                                    CupertinoIcons.plus_circle_fill,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   ),
                 ),
               ),
-              Divider(),
+              const Divider(),
               Row(
                 children: [
-                  Container(
-                    padding: EdgeInsets.all(5),
-                    child: GestureDetector(
-                      onTap: () {
-                        addText = !addText;
-                        element = false;
-                        image = false;
-                        setState(() {});
-                      },
-                      child: Container(
-                        height: 100,
-                        width: 100,
-                        padding: const EdgeInsets.all(5),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          border: Border.all(
-                            color: addText == true
-                                ? Colors.greenAccent
-                                : Colors.black,
-                            width: 1,
-                          ),
+                  GestureDetector(
+                    onTap: () {
+                      addText = !addText;
+                      element = false;
+                      image = false;
+                      setState(() {});
+                    },
+                    child: Container(
+                      height: 100,
+                      width: 100,
+                      margin: const EdgeInsets.all(5),
+                      padding: const EdgeInsets.all(5),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(
+                          color: addText == true
+                              ? Colors.greenAccent
+                              : Colors.black,
+                          width: 1,
                         ),
-                        alignment: Alignment.center,
-                        child: const Text('Add Text'),
                       ),
+                      alignment: Alignment.center,
+                      child: const Text('Add Text'),
                     ),
                   ),
-                  Container(
-                    padding: EdgeInsets.all(5),
-                    child: GestureDetector(
-                      onTap: () {
-                        addText = false;
-                        element = !element;
-                        image = false;
-                        setState(() {});
-                      },
-                      child: Container(
-                        height: 100,
-                        width: 100,
-                        padding: const EdgeInsets.all(5),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          border: Border.all(
-                            color: element == true
-                                ? Colors.greenAccent
-                                : Colors.black,
-                            width: 1,
-                          ),
+                  GestureDetector(
+                    onTap: () {
+                      addText = false;
+                      element = false;
+                      image = !image;
+                      setState(() {});
+                    },
+                    child: Container(
+                      height: 100,
+                      width: 100,
+                      margin: EdgeInsets.all(5),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(
+                          color:
+                              image == true ? Colors.greenAccent : Colors.black,
+                          width: 1,
                         ),
-                        alignment: Alignment.center,
-                        child: const Text('Elements'),
                       ),
-                    ),
-                  ),
-                  Container(
-                    padding: EdgeInsets.all(5),
-                    child: GestureDetector(
-                      onTap: () {
-                        addText = false;
-                        element = false;
-                        image = !image;
-                        setState(() {});
-                      },
-                      child: Container(
-                        height: 100,
-                        width: 100,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          border: Border.all(
-                            color: image == true
-                                ? Colors.greenAccent
-                                : Colors.black,
-                            width: 1,
-                          ),
-                        ),
-                        alignment: Alignment.center,
-                        child: const Text('Image'),
-                      ),
+                      alignment: Alignment.center,
+                      child: const Text('Image'),
                     ),
                   ),
                 ],
