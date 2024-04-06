@@ -37,4 +37,3 @@
 <img src="https://github.com/Vinisha0306/festival_post/assets/143987696/ab1effa1-8c60-4389-8900-d582691df5e1" width="250" height="550">
 <img src="https://github.com/Vinisha0306/festival_post/assets/143987696/3fd8a47d-7742-428f-944a-dd957c574696" width="250" height="550">
 <img src="https://github.com/Vinisha0306/festival_post/assets/143987696/e3068415-77a7-4a40-8409-2c486f5822fe" width="250" height="550">
-![image]()
