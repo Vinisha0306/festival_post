@@ -50,7 +50,7 @@ class _EditorPageState extends State<EditorPage> {
     RenderRepaintBoundary boundary =
         widgetKey.currentContext!.findRenderObject() as RenderRepaintBoundary;
     ui.Image image = await boundary.toImage(
-      pixelRatio: 15,
+      pixelRatio: 2,
     );
     ByteData? data = await image.toByteData(
       format: ui.ImageByteFormat.png,
