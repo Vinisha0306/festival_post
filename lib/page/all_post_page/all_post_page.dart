@@ -1,5 +1,6 @@
 import 'package:festival_post/header.dart';
 import 'package:festival_post/modal/app_modal.dart';
+import 'package:flutter/cupertino.dart';
 
 class All_Post_Page extends StatefulWidget {
   const All_Post_Page({super.key});
@@ -19,6 +20,16 @@ class _All_Post_PageState extends State<All_Post_Page> {
           post.name,
           style: const TextStyle(
             fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
+        ),
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: Icon(
+            CupertinoIcons.back,
+            color: Colors.white,
           ),
         ),
         backgroundColor: const Color.fromARGB(255, 44, 184, 153),
@@ -34,24 +45,40 @@ class _All_Post_PageState extends State<All_Post_Page> {
             padding: const EdgeInsets.all(5),
             child: GestureDetector(
               onTap: () {
-                Navigator.pushNamed(context, AppRoutes.editor_page,
-                    arguments: post.images[index]);
+                Navigator.pushNamed(
+                  context,
+                  AppRoutes.editor_page,
+                  arguments: post.images[index],
+                );
               },
               child: Container(
-                height: 400,
-                width: 400,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  border: Border.all(
-                    color: Colors.black,
-                    width: 2,
-                  ),
-                  image: DecorationImage(
-                    image: NetworkImage(
-                      post.images[index],
+                height: 200,
+                width: 200,
+                child: Column(
+                  children: [
+                    Container(
+                      height: 150,
+                      width: 150,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                        boxShadow: const [
+                          BoxShadow(
+                            color: Colors.grey,
+                            offset: Offset(5, 5),
+                            blurRadius: 3,
+                          )
+                        ],
+                        image: DecorationImage(
+                          image: NetworkImage(
+                            post.images[index] ?? allPost[0].thamb,
+                          ),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
                     ),
-                    fit: BoxFit.cover,
-                  ),
+                    Text(''),
+                  ],
                 ),
               ),
             ),

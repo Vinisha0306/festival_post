@@ -20,6 +20,7 @@ class _HomePageState extends State<HomePage> {
           'Festival Post',
           style: TextStyle(
             fontWeight: FontWeight.bold,
+            color: Colors.white,
           ),
         ),
         backgroundColor: const Color.fromARGB(255, 44, 184, 153),
@@ -46,16 +47,38 @@ class _HomePageState extends State<HomePage> {
                           arguments: allPost[index]);
                     },
                     child: Container(
-                      height: 150,
-                      width: 150,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        image: DecorationImage(
-                          image: NetworkImage(
-                            allPost[index].thamb ?? allPost[0].thamb,
+                      height: 200,
+                      width: 200,
+                      child: Column(
+                        children: [
+                          Container(
+                            height: 150,
+                            width: 150,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              boxShadow: const [
+                                BoxShadow(
+                                  color: Colors.grey,
+                                  offset: Offset(5, 5),
+                                  blurRadius: 3,
+                                )
+                              ],
+                              image: DecorationImage(
+                                image: NetworkImage(
+                                  allPost[index].thamb ?? allPost[0].thamb,
+                                ),
+                                fit: BoxFit.cover,
+                              ),
+                            ),
                           ),
-                          fit: BoxFit.cover,
-                        ),
+                          Text(
+                            allPost[index].name,
+                            style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ),

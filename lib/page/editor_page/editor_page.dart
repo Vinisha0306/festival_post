@@ -74,7 +74,10 @@ class _EditorPageState extends State<EditorPage> {
       appBar: AppBar(
         title: const Text(
           'Editor',
-          style: TextStyle(fontWeight: FontWeight.bold),
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
         ),
         actions: [
           IconButton(
@@ -89,7 +92,7 @@ class _EditorPageState extends State<EditorPage> {
             },
             icon: const Icon(
               Icons.save,
-              color: Colors.black,
+              color: Colors.white,
             ),
           ),
           IconButton(
@@ -97,25 +100,34 @@ class _EditorPageState extends State<EditorPage> {
               ShareExtend.share((await getFileFromWidget()).path, 'image').then(
                 (value) => ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(
-                    content: Text('Save in Gallery'),
+                    content: Text('share'),
                   ),
                 ),
               );
             },
             icon: const Icon(
               Icons.share,
-              color: Colors.black,
+              color: Colors.white,
             ),
           ),
           const SizedBox(
             width: 5,
           ),
         ],
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: const Icon(
+            CupertinoIcons.back,
+            color: Colors.white,
+          ),
+        ),
         backgroundColor: const Color.fromARGB(255, 44, 184, 153),
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(16),
+      body: Padding(
+        padding: const EdgeInsets.all(16),
+        child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
@@ -284,12 +296,12 @@ class _EditorPageState extends State<EditorPage> {
                                 margin: const EdgeInsets.all(5),
                                 decoration: BoxDecoration(
                                   shape: BoxShape.circle,
-                                  border: Border.all(
-                                    color: textColour == Colors.primaries[index]
-                                        ? Colors.greenAccent
-                                        : Colors.black,
-                                    width: 2,
-                                  ),
+                                  border: textColour == Colors.primaries[index]
+                                      ? Border.all(
+                                          color: Colors.black,
+                                          width: 2,
+                                        )
+                                      : null,
                                 ),
                                 child: CircleAvatar(
                                   radius: 25,
