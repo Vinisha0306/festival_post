@@ -2,6 +2,7 @@ import 'dart:typed_data';
 import 'dart:ui' as ui;
 
 import 'package:festival_post/header.dart';
+import 'package:festival_post/page/editor_page/componets/AddText.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
@@ -9,6 +10,21 @@ import 'package:flutter/widgets.dart';
 import 'package:image_gallery_saver/image_gallery_saver.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:share_extend/share_extend.dart';
+
+bool addText = false;
+bool element = false;
+bool image = false;
+String text = 'Text';
+Color textColour = Colors.black;
+double textSize = 14;
+BoxShape imageShape = BoxShape.rectangle;
+File? phoneImage;
+TextStyle FontFamily = festivalFontFamily[0];
+TextEditingController mainText = TextEditingController();
+Offset dxy = Offset(0, 0);
+Offset txy = Offset(0, 0);
+double IHeight = 300;
+double IWidth = 200;
 
 class EditorPage extends StatefulWidget {
   const EditorPage({super.key});
@@ -18,21 +34,6 @@ class EditorPage extends StatefulWidget {
 }
 
 class _EditorPageState extends State<EditorPage> {
-  bool addText = false;
-  bool element = false;
-  bool image = false;
-  String text = 'Text';
-  Color textColour = Colors.black;
-  double textSize = 14;
-  BoxShape imageShape = BoxShape.rectangle;
-  File? phoneImage;
-  TextStyle FontFamily = festivalFontFamily[0];
-  TextEditingController mainText = TextEditingController();
-  Offset dxy = Offset(0, 0);
-  Offset txy = Offset(0, 0);
-  double IHeight = 300;
-  double IWidth = 200;
-
   Future<void> getImage({required ImageSource source}) async {
     ImagePicker picker = ImagePicker();
 
@@ -69,6 +70,9 @@ class _EditorPageState extends State<EditorPage> {
   @override
   Widget build(BuildContext context) {
     String Edit = ModalRoute.of(context)!.settings.arguments as String;
+    void getState() {
+      setState(() {});
+    }
 
     return Scaffold(
       appBar: AppBar(
@@ -162,14 +166,12 @@ class _EditorPageState extends State<EditorPage> {
                         },
                         child: Transform.translate(
                           offset: txy,
-                          child: Container(
-                            child: SelectableText(
-                              mainText.text,
-                              style: FontFamily.copyWith(
-                                color: textColour,
-                                fontSize: textSize,
-                                fontWeight: FontWeight.bold,
-                              ),
+                          child: SelectableText(
+                            mainText.text,
+                            style: FontFamily.copyWith(
+                              color: textColour,
+                              fontSize: textSize,
+                              fontWeight: FontWeight.bold,
                             ),
                           ),
                         ),
@@ -209,152 +211,9 @@ class _EditorPageState extends State<EditorPage> {
                 height: 5,
               ),
               // add text
-              Visibility(
-                visible: addText == true,
-                child: SingleChildScrollView(
-                  child: Container(
-                    height: 300,
-                    width: 500,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        const Text(
-                          'Edit Text',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18,
-                          ),
-                        ),
-                        TextField(
-                          controller: mainText,
-                          decoration: const InputDecoration(
-                            hintText: 'Text',
-                          ),
-                          onChanged: (val) {
-                            setState(() {});
-                          },
-                        ),
-                        const Text(
-                          'Text Style',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18,
-                          ),
-                        ),
-                        SingleChildScrollView(
-                          scrollDirection: Axis.horizontal,
-                          child: Row(
-                            children: List.generate(
-                              festivalFontFamily.length,
-                              (index) => GestureDetector(
-                                onTap: () {
-                                  FontFamily = festivalFontFamily[index];
-                                  setState(() {});
-                                },
-                                child: Container(
-                                  height: 50,
-                                  margin: const EdgeInsets.all(5),
-                                  padding: const EdgeInsets.all(10),
-                                  decoration: BoxDecoration(
-                                    border: Border.all(
-                                      color: FontFamily ==
-                                              festivalFontFamily[index]
-                                          ? Colors.greenAccent
-                                          : Colors.black,
-                                      width: 2,
-                                    ),
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                  alignment: Alignment.center,
-                                  child: Text(
-                                    'ABC',
-                                    style: festivalFontFamily[index],
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                        const Text(
-                          'Text Colour',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18,
-                          ),
-                        ),
-                        Expanded(
-                          child: ListView.builder(
-                            scrollDirection: Axis.horizontal,
-                            itemCount: Colors.primaries.length,
-                            itemBuilder: (context, index) => GestureDetector(
-                              onTap: () {
-                                textColour = Colors.primaries[index];
-                                setState(() {});
-                              },
-                              child: Container(
-                                margin: const EdgeInsets.all(5),
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  border: textColour == Colors.primaries[index]
-                                      ? Border.all(
-                                          color: Colors.black,
-                                          width: 2,
-                                        )
-                                      : null,
-                                ),
-                                child: CircleAvatar(
-                                  radius: 25,
-                                  backgroundColor: Colors.primaries[index],
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                        Row(
-                          children: [
-                            const Text(
-                              'Text Size',
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18,
-                              ),
-                            ),
-                            const Spacer(),
-                            IconButton(
-                              onPressed: () {
-                                textSize--;
-                                setState(() {});
-                              },
-                              icon: const Icon(
-                                CupertinoIcons.minus_circle_fill,
-                              ),
-                            ),
-                            Text(
-                              '${textSize.toInt()}',
-                              style: const TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 16,
-                              ),
-                            ),
-                            IconButton(
-                              onPressed: () {
-                                textSize++;
-                                setState(() {});
-                              },
-                              icon: const Icon(
-                                CupertinoIcons.plus_circle_fill,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-
-              //images
+              AddText(
+                getState: getState,
+              ), //images
               Visibility(
                 visible: image == true,
                 child: Container(

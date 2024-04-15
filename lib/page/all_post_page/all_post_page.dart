@@ -27,7 +27,7 @@ class _All_Post_PageState extends State<All_Post_Page> {
           onPressed: () {
             Navigator.pop(context);
           },
-          icon: Icon(
+          icon: const Icon(
             CupertinoIcons.back,
             color: Colors.white,
           ),
