@@ -25,19 +25,15 @@
 
 ## OutPut :
 
-<img src="https://github.com/Vinisha0306/festival_post/assets/143987696/777c0dd2-d794-4523-8583-6260e3ac4dd2" width="250" height="550">
-<img src="https://github.com/Vinisha0306/festival_post/assets/143987696/6531f5fc-3c61-4e0a-9d10-edd9ab557bdc" width="250" height="550">
-<img src="https://github.com/Vinisha0306/festival_post/assets/143987696/2ca50e99-0bca-48f3-8367-bef7a345bcaa" width="250" height="550">
-<img src="https://github.com/Vinisha0306/festival_post/assets/143987696/3debe572-2988-4e4b-a821-4ddf25ff28bf" width="250" height="550">
-<img src="https://github.com/Vinisha0306/festival_post/assets/143987696/1b40c531-b12f-480a-aa9b-86c12f5bde5f" width="250" height="550">
-<img src="https://github.com/Vinisha0306/festival_post/assets/143987696/741070dc-4af6-45e3-965f-d138f8a680dd" width="250" height="550">
-<img src="https://github.com/Vinisha0306/festival_post/assets/143987696/5b00654c-10a2-4a76-ac23-9035009966f5" width="250" height="550">
-<img src="https://github.com/Vinisha0306/festival_post/assets/143987696/efb3efee-cd15-4492-ab7d-2f4aa0ed2c58" width="250" height="550">
-<img src="https://github.com/Vinisha0306/festival_post/assets/143987696/9ed6f629-34da-4945-a3f3-daa9acd839f6" width="250" height="550">
-<img src="https://github.com/Vinisha0306/festival_post/assets/143987696/78430b05-0a06-4aaf-bd93-3db6c83d7f2b" width="250" height="550">
-<img src="https://github.com/Vinisha0306/festival_post/assets/143987696/9d79b1b6-b811-4a46-98ab-8a36d9fff926" width="250" height="550">
-<img src="https://github.com/Vinisha0306/festival_post/assets/143987696/3a436a98-f964-473e-ae63-1535ca24c70b" width="250" height="550">
-<img src="https://github.com/Vinisha0306/festival_post/assets/143987696/e0a4ae21-1fe9-4985-bbd6-591b143e7686" width="250" height="550">
-
-## Video
-https://github.com/Vinisha0306/festival_post/assets/143987696/72edc6a0-d730-4a74-9ec0-dc0226c8f59e
+<img src="https://github.com/Vinisha0306/festival_post/assets/143987696/24a27312-ec44-4d8a-a10f-6f19e4b68996" width="250" height="550">
+<img src="https://github.com/Vinisha0306/festival_post/assets/143987696/e4170cde-3b70-431e-99be-bba22dba8ce4" width="250" height="550">
+<img src="https://github.com/Vinisha0306/festival_post/assets/143987696/51bfb31d-7a43-454d-a251-3dbca0df40c5" width="250" height="550">
+<img src="https://github.com/Vinisha0306/festival_post/assets/143987696/c0f39222-d504-4b8a-8c6a-3d8fb460b11b" width="250" height="550">
+<img src="https://github.com/Vinisha0306/festival_post/assets/143987696/00e70b80-3a35-4cb4-b7bd-e578590d67cb" width="250" height="550">
+<img src="https://github.com/Vinisha0306/festival_post/assets/143987696/e96ed3f2-b737-449d-a9a6-e0255a031924" width="250" height="550">
+<img src="https://github.com/Vinisha0306/festival_post/assets/143987696/6003091a-1ac0-4edc-b01f-ad26e4576535" width="250" height="550">
+<img src="https://github.com/Vinisha0306/festival_post/assets/143987696/fd68eb03-1459-4ee7-9e48-52d2049bff8e" width="250" height="550">
+<img src="https://github.com/Vinisha0306/festival_post/assets/143987696/9285f540-957f-4875-9c1c-40007c11c931" width="250" height="550">
+<img src="https://github.com/Vinisha0306/festival_post/assets/143987696/ab1effa1-8c60-4389-8900-d582691df5e1" width="250" height="550">
+<img src="https://github.com/Vinisha0306/festival_post/assets/143987696/3fd8a47d-7742-428f-944a-dd957c574696" width="250" height="550">
+<img src="https://github.com/Vinisha0306/festival_post/assets/143987696/e3068415-77a7-4a40-8409-2c486f5822fe" width="250" height="550">
